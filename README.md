@@ -12,8 +12,8 @@ using namespace std;
 class Demo {
   string name = "default";
   public:
-    Demo() { cout<<"constructor\n" }
-    ~Demo() { cout<<"destructor\n" }
+    Demo() { cout<<"constructor\n"; }
+    ~Demo() { cout<<"destructor\n"; }
     Demo(string n) {name = n;}
     string get() { return name; }
     void set(string n) { name = n; }
