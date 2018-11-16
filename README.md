@@ -25,5 +25,18 @@ int main() {
   sm.append("demo1",d1);
   sm.append("demo2",d2);
   sm.append("demo3",new Demo());
+  cout<<"----";
+  return 0;
 }
 ```
+# Output
+```
+constructor
+constructor
+constructor
+----
+destructor
+destructor
+destructor
+```
+in output you can see that `Demo` class destructor gets automatically called when `sm` object goes out of scope
