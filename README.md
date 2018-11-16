@@ -26,14 +26,12 @@ int main() {
   sm.append("demo1",d1);
   sm.append("demo2",d2);
   sm.append("demo3",new Demo());
-  cout<<"----";
+  cout<<"\n----";
   return 0;
 }
 ```
 # Output
 ```
-constructor
-constructor
 constructor
 ----
 destructor
