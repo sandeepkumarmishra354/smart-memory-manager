@@ -53,3 +53,22 @@ tmp->get(); `or` sm["demo3"]->get(); // return "new demo name"
 ```
 ### Note
 if a wrong key given then an exception `KeyError` thrown
+# All available methods
+```
+append(string key, classType *obj);//this method used for adding new items in the list
+clear();//clears the list and also deletes all the items
+count(); returns the nubmber of items
+at_beginning(string key, classType *obj);//adds an item at the beginning of the list
+first_value();//returns the first item in list
+last_value();//returns the last item in list
+first_key();//returns the key of first item
+last_key();//returns the key of last item
+get_item(string key);//returns the item associated with this key
+get_key(classType *obj);//returns the key associated with this *obj
+remove(string key);//removes the item associated with this key
+remove(classType *obj);//removes the item if item is in list
+swap_item(string key1, string key2);//swap items not the keys
+swap_item(classType *obj1, classType *obj2);//swap items not the keys
+swap_key(string key1, string key2);//swap keys not the items
+swap_key(classType *obj1, classType *obj2);//swap keys not the items
+```
