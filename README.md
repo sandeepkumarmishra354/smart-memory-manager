@@ -51,3 +51,5 @@ Demo *tmp = sm["demo3"];
 tmp->set("new demo name");
 tmp->get(); `or` sm["demo3"]->get(); // return "new demo name"
 ```
+### Note
+if a wrong key given then an exception `KeyError` thrown
