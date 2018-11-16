@@ -212,7 +212,7 @@ void SmartMemoryManager<__VALUE>::clear()
 }
 
 template <class __VALUE>
-void SmartMemoryManager<__VALUE>::at_begining(const key_type &key, const value_type val)
+void SmartMemoryManager<__VALUE>::at_beginning(const key_type &key, const value_type val)
 {
 	KEY_VALUE_CONTAINER *tmp = new KEY_VALUE_CONTAINER(key, val);
 	total_item++;
