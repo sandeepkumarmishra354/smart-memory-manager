@@ -59,7 +59,7 @@ class SmartMemoryManager
 	void clear();
 	int count() const;
 	void append(const key_type &key, const value_type val);
-	void at_begining(const key_type &key, const value_type val);
+	void at_beginning(const key_type &key, const value_type val);
 	value_type first_value() const;
 	value_type last_value() const;
 	key_type first_key() const;
