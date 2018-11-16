@@ -51,6 +51,12 @@ Demo *tmp = sm["demo3"];
 tmp->set("new demo name");
 tmp->get(); `or` sm["demo3"]->get(); // return "new demo name"
 ```
+you can also access items like an array,(Array starts with 0)
+```
+for(int i=0; i<sm.count(); i++) {
+  sm[i]->call_method();
+}
+```
 ### Note
 if a wrong key given then an exception `KeyError` thrown
 # All available methods
@@ -72,3 +78,8 @@ swap_item(classType *obj1, classType *obj2);//swap items not the keys
 swap_key(string key1, string key2);//swap keys not the items
 swap_key(classType *obj1, classType *obj2);//swap keys not the items
 ```
+# Exceptions
+`KeyError` this exception occurs when an incorrect key is given
+`ItemError` this exception occurs when an incorrect item (classType *obj) is given
+`LengthError` this exception occurs when there is no items in the list
+`ArrayIndexError` this exception occurs when arrayIndex > numberOfItems
