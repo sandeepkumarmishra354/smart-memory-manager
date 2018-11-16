@@ -71,8 +71,8 @@ first_key();//returns the key of first item
 last_key();//returns the key of last item
 get_item(string key);//returns the item associated with this key
 get_key(classType *obj);//returns the key associated with this *obj
-remove(string key);//removes the item associated with this key
-remove(classType *obj);//removes the item if item is in list
+remove(string key);//removes the item associated with this key also deletes that object
+remove(classType *obj);//removes the item if item is in list also deletes that object
 swap_item(string key1, string key2);//swap items not the keys
 swap_item(classType *obj1, classType *obj2);//swap items not the keys
 swap_key(string key1, string key2);//swap keys not the items
