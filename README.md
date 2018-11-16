@@ -10,12 +10,13 @@ you can easily instantiate your objects with `new` keyword and asign that object
 using namespace std;
 
 class Demo {
-  string name;
+  string name = "default";
   public:
     Demo() { cout<<"constructor\n" }
     ~Demo() { cout<<"destructor\n" }
     Demo(string n) {name = n;}
     string get() { return name; }
+    void set(string n) { name = n; }
 };
 
 int main() {
@@ -39,4 +40,14 @@ destructor
 destructor
 destructor
 ```
-in output you can see that `Demo` class destructor gets automatically called when `sm` object goes out of scope
+in output you can see that `Demo` class destructor gets automatically called when `sm` object goes out of scope.
+
+# More
+you can use your objects created with `new` like this--
+```
+sm["demo1"]->get(); // return string "demo name 1"
+sm["demo3"]->get(); // return string "default"
+Demo *tmp = sm["demo3"];
+tmp->set("new demo name");
+tmp->get(); `or` sm["demo3"]->get(); // return "new demo name"
+```
