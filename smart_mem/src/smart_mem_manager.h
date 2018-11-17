@@ -1,10 +1,9 @@
 // userdefined template(generic class) for smart memory management
 // author:- sandeep mishra
-#ifndef SMART_MEM_MANAGER_H
-#define SMART_MEM_MANAGER_H
+#ifndef SMART_MEM_H
+#define SMART_MEM_H
 #include <string>
 #include <sstream>
-//const short NOT_FOUND = -1;
 
 template <class __VALUE>
 class SmartMemoryManager
@@ -19,7 +18,7 @@ class SmartMemoryManager
 	{
 		const void *address = static_cast<const void *>(vl);
 		std::stringstream ss;
-		ss<<address;
+		ss << address;
 		return ss.str();
 	}
 
@@ -59,7 +58,7 @@ class SmartMemoryManager
 	void clear();
 	int count() const;
 	void append(const key_type &key, const value_type val);
-	void at_beginning(const key_type &key, const value_type val);
+	void at_begining(const key_type &key, const value_type val);
 	value_type first_value() const;
 	value_type last_value() const;
 	key_type first_key() const;
@@ -72,6 +71,7 @@ class SmartMemoryManager
 	void swap_item(const value_type val1, const value_type val2);
 	void swap_key(const value_type val1, const value_type val2);
 	void swap_key(const key_type &key1, const key_type &key2);
+	void for_each(void callback(value_type value)) const;
 	value_type operator[](const key_type &key) const;
 	value_type operator[](const int &index) const;
 };

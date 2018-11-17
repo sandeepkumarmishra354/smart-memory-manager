@@ -1,5 +1,5 @@
-#include "smart_mem_manager.h"
-#include "mem_exceptions.h"
+#include "smart_mem.h"
+#include "exceptions.h"
 
 template <class __VALUE>
 SmartMemoryManager<__VALUE>::~SmartMemoryManager()
@@ -212,7 +212,7 @@ void SmartMemoryManager<__VALUE>::clear()
 }
 
 template <class __VALUE>
-void SmartMemoryManager<__VALUE>::at_beginning(const key_type &key, const value_type val)
+void SmartMemoryManager<__VALUE>::at_begining(const key_type &key, const value_type val)
 {
 	KEY_VALUE_CONTAINER *tmp = new KEY_VALUE_CONTAINER(key, val);
 	total_item++;
@@ -487,4 +487,15 @@ __VALUE SmartMemoryManager<__VALUE>::operator[](const int &index) const
 	for (int i = 1; i <= index; i++)
 		tmp = tmp->next;
 	return tmp->value;
+}
+
+template <class __VALUE>
+void SmartMemoryManager<__VALUE>::for_each(void callback(value_type value)) const
+{
+	KEY_VALUE_CONTAINER *tmp = container;
+	while(tmp != nullptr)
+	{
+		callback(tmp->value);
+		tmp = tmp->next;
+	}
 }
