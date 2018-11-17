@@ -44,6 +44,8 @@ in output you can see that `Demo` class destructor gets automatically called whe
 Here is use `classType` as general term...
 `classType` can be any valid data type like- `int`,`float`,`string`, or `user defined data types` etc...
 
+in the above example `classTypes` is a user defined data type `Demo`
+
 
 # More
 you can use your objects created with `new` like this--
