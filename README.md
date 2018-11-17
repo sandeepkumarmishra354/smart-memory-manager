@@ -54,6 +54,17 @@ you can also access items like an array,(Array starts with 0)
 for(int i=0; i<sm.count(); i++) {
   sm[i]->call_method();
 }
+
+OR BEST WAY IS-->
+
+sm.for_each( [](Demo *td) { td->get(); } ); // passing a lambda function
+--------------------------------------------
+void foo(Demo *td) {
+  td->get();
+  td->set("hello world");
+}
+
+sm.for_each(foo);// passing a function as argument make sure that function must accept an argument of type `classType *`
 ```
 ### Note
 if a wrong key given then an exception `KeyError` thrown
