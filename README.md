@@ -40,13 +40,6 @@ destructor
 ```
 in output you can see that `Demo` class destructor gets automatically called when `sm` object goes out of scope.
 
-# Attention !!!
-Here is use `classType` as general term...
-`classType` can be any valid data type like- `int`,`float`,`string`, or `user defined data types` etc...
-
-in the above example `classTypes` is a user defined data type `Demo`
-
-
 # More
 you can use your objects created with `new` like this--
 ```
@@ -99,3 +92,9 @@ swap_key(classType *obj1, classType *obj2);//swap keys not the items
 `ItemError` this exception occurs when an incorrect item (classType *obj) is given
 `LengthError` this exception occurs when there is no items in the list
 `ArrayIndexError` this exception occurs when arrayIndex > numberOfItems
+
+# Attention !!!
+Here is use `classType` as general term...
+`classType` can be any valid data type like- `int`,`float`,`string`, or `user defined data types` etc...
+
+in the above example `classTypes` is a user defined data type `Demo`
