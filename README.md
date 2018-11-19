@@ -80,8 +80,8 @@ last_value();//returns the last item in list
 first_key();//returns the key of first item
 last_key();//returns the key of last item
 
-get_item(string key);//returns the item associated with this key
-get_key(itemType *obj);//returns the key associated with this *obj
+get_item(string key);//returns the item associated with this key this method doesn't throw any exception returns `nullptrt` when there in no such key
+get_key(itemType *obj);//returns the key associated with this *obj this method doesn't throw any exception returns `empty std::string` when there in no such item
 
 remove(string key);//removes the item associated with this key also deletes that object
 remove(itemType *obj);//removes the item if item is in list also deletes that object
