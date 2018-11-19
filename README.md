@@ -103,6 +103,11 @@ passed function gets called with every item as its argument
 
 `ArrayIndexError` this exception occurs when arrayIndex > numberOfItems
 
+### register an error handler
+you can also register a function for error handling. function will be called when any exception thrown during runtime.
+
+function must accepts 2 arguments one is `ErrorType` and second is (optional default is `true`) a bool indicating that after calling the function will exception thrown or not.
+
 # Attention !!!
 Here is use `itemType` as general term...
 `itemType` can be any valid data type like- `int`,`float`,`string`, or `user defined data types` etc...
