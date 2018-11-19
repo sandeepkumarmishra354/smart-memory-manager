@@ -96,8 +96,11 @@ passed function gets called with every item as its argument
 ```
 # Exceptions
 `KeyError` this exception occurs when an incorrect key is given
+
 `ItemError` this exception occurs when an incorrect item (classType *obj) is given
+
 `LengthError` this exception occurs when there is no items in the list
+
 `ArrayIndexError` this exception occurs when arrayIndex > numberOfItems
 
 # Attention !!!
