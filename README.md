@@ -106,7 +106,38 @@ passed function gets called with every item as its argument
 ### register an error handler
 you can also register a function for error handling. function will be called when any exception thrown during runtime.
 
-function must accepts 2 arguments one is `ErrorType` and second is (optional default is `true`) a bool indicating that after calling the function will exception thrown or not.
+function must accepts 2 arguments one is `ErrorType` and second is (optional default is `true`) a bool indicating that after calling the function exception will be thrown or not.
+
+```
+sm.register_error_handler(
+  [](ErrorType ert, std::string msg) {
+    if(ert == ErrorType::KEY_ERROR)
+      // key error happens
+    if(ert == ErrorType::ITEM_ERROR)
+      // item error happens
+    if(ert == ErrorType::ARRAY_INDEX_ERROR)
+      // array out of bounds
+    if(ert == ErrorType::LENGTH_ERROR)
+      // length error happens
+    cout<<msg;
+  }
+);//register a lambda function here exception will be thrown bcz default is `true` change this behaviour by passing second argument as `false`
+
+void handler(ErrorType ert, std::string msg) {
+    if(ert == ErrorType::KEY_ERROR)
+      // key error happens
+    if(ert == ErrorType::ITEM_ERROR)
+      // item error happens
+    if(ert == ErrorType::ARRAY_INDEX_ERROR)
+      // array out of bounds
+    if(ert == ErrorType::LENGTH_ERROR)
+      // length error happens
+    cout<<msg;
+  }
+  
+sm.register_error_handler(handler,false);//register a normal function here, exception will not thrown bcz passing second argument as `false` means no exception will be thrown instead when error occurs `handler` is called. 
+```
+By this you can avoid using `try { } catch { }` block
 
 # Attention !!!
 Here is use `itemType` as general term...
