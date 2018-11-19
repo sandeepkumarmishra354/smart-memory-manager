@@ -137,7 +137,7 @@ void handler(ErrorType ert, std::string msg) {
   
 sm.register_error_handler(handler,false);//register a normal function here, exception will not thrown bcz passing second argument as `false` means no exception will be thrown instead when error occurs `handler` is called. 
 ```
-By this you can avoid using `try { } catch { }` block
+By this approach you can avoid using `try { } catch { }` block
 
 # Attention !!!
 Here is use `itemType` as general term...
