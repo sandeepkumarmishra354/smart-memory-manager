@@ -1,20 +1,43 @@
-// userdefined template(generic class) for smart memory management
-// author:- sandeep mishra
+// A STL for smart memory management
+// Author:- sandeep mishra
 #ifndef SMART_MEM_H
 #define SMART_MEM_H
 #include <string>
 #include <sstream>
+#include <type_traits>
+#include "mem_exceptions.h"
 
 template <class __VALUE>
 class SmartMemoryManager
 {
   private:
+	//key data type
 	typedef std::string key_type;
+	//value data type
 	typedef __VALUE value_type;
+	bool is_pointer_type = std::is_pointer<value_type>::value;
+	//an error handler called before throwing any exception (if provided)
+	void (*error_handler)(ErrorType, std::string) = nullptr;
+	// indicates that error will thrown or not
+	bool throw_error = true;
+	// no of items
 	int total_item = 0;
+	// checks that key exists or not
 	bool check_key_existence(const key_type &key) const;
+	// checks that provided item exists or not
 	bool check_item_existence(const value_type value) const;
-	std::string get_address_string(value_type vl) const
+	// checks the length of items and throw exception when necessary
+	bool check_for_total_item() const;
+	// checks length of item for swapping
+	bool check_length_for_swap() const;
+	// checks that both keys are equal or not
+	bool check_equality(const key_type &key1, const key_type &key2) const;
+	// checks that both items are equal or not
+	bool check_equality(const value_type val1, const value_type val2) const;
+	// checks given index if index >= total_item ArrayIndexError exception thrown
+	bool check_array_index(const int &index) const;
+	// converts objects physicall address into std::string
+	std::string get_address_str(void *vl) const
 	{
 		const void *address = static_cast<const void *>(vl);
 		std::stringstream ss;
@@ -22,6 +45,7 @@ class SmartMemoryManager
 		return ss.str();
 	}
 
+	// data structure for holding key and value(items)
 	struct KEY_VALUE_CONTAINER
 	{
 		key_type key_code;
@@ -46,14 +70,18 @@ class SmartMemoryManager
 			}
 		}
 	};
-
+	//holds the very first node of KEY_VALUE_PAIR
 	KEY_VALUE_CONTAINER *container = nullptr;
+	//holds the last node of KEY_VALUE_PAIR
 	KEY_VALUE_CONTAINER *container_last = nullptr;
 	// protect default object initialization from rvalue to lvalue
 	SmartMemoryManager &operator=(const SmartMemoryManager &obj);
 
   public:
-	SmartMemoryManager() {}
+	SmartMemoryManager()
+	{
+		std::cout<<is_pointer_type;
+	}
 	~SmartMemoryManager();
 	void clear();
 	int count() const;
@@ -71,7 +99,8 @@ class SmartMemoryManager
 	void swap_item(const value_type val1, const value_type val2);
 	void swap_key(const value_type val1, const value_type val2);
 	void swap_key(const key_type &key1, const key_type &key2);
-	void for_each(void callback(value_type value)) const;
+	void for_each(void callback(const value_type value)) const;
+	void register_error_handler(void (*error_handler)(ErrorType, std::string), bool throw_error = true);
 	value_type operator[](const key_type &key) const;
 	value_type operator[](const int &index) const;
 };

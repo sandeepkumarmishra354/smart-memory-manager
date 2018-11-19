@@ -3,18 +3,25 @@
 #include <iostream>
 #include <string>
 #include <exception>
-using namespace std;
 
-class KeyError : public exception
+enum class ErrorType
+{
+	KEY_ERROR,
+	ITEM_ERROR,
+	LENGTH_ERROR,
+	ARRAY_INDEX_ERROR
+};
+
+class KeyError : public std::exception
 {
 
   private:
-    string msg = "wrong key given";
+    std::string msg = "wrong key given";
 
   public:
     KeyError() {}
-    KeyError(string m) { msg = m; }
-    const string getMessage() const
+    KeyError(std::string m) { msg = m; }
+    const std::string getMessage() const
     {
         return msg;
     }
@@ -24,15 +31,15 @@ class KeyError : public exception
     }
 };
 
-class ItemError : public exception
+class ItemError : public std::exception
 {
   private:
-    string msg = "wrong item given";
+    std::string msg = "wrong item given";
 
   public:
     ItemError() {}
-    ItemError(string m) { msg = m; }
-    const string getMessage() const
+    ItemError(std::string m) { msg = m; }
+    const std::string getMessage() const
     {
         return msg;
     }
@@ -42,15 +49,15 @@ class ItemError : public exception
     }
 };
 
-class LengthError : public exception
+class LengthError : public std::exception
 {
   private:
-    string msg = "there is no item in the container...\nto check length of the container call count()";
+    std::string msg = "there is no item in the container...\nto check length of the container call count()";
 
   public:
     LengthError() {}
-    LengthError(string m) { msg = m; }
-    const string getMessage() const
+    LengthError(std::string m) { msg = m; }
+    const std::string getMessage() const
     {
         return msg;
     }
@@ -60,14 +67,14 @@ class LengthError : public exception
     }
 };
 
-class ArrayIndexError : public exception
+class ArrayIndexError : public std::exception
 {
   private:
-    string msg = "Error:**Array index out of bounds**";
+    std::string msg = "Error:**Array index out of bounds**";
 
   public:
     ArrayIndexError() {}
-    const string getMessage() const
+    const std::string getMessage() const
     {
         return msg;
     }
