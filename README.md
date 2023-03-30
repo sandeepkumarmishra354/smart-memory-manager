@@ -3,7 +3,7 @@ An easy way to deal with c++ pointers
 Now you do not have to worry about memory leakage because of pointers...
 you can easily instantiate your objects with `new` keyword and asign that object with a key(key must be of std::string type) to `SmartMemoryManager` class. Now use that object and don't worry about deleting them. `SmartMemoryManager` will automatically delete the object for you when it goes out of scope.
 # Example
-```
+```cpp
 #include <smart_mem/smart_mem.h>
 #include <iostream>
 #include <string>
@@ -42,7 +42,7 @@ in output you can see that `Demo` class destructor gets automatically called whe
 
 # More
 you can use your objects created with `new` like this--
-```
+```cpp
 sm["demo1"]->get(); // return string "demo name 1"
 sm["demo3"]->get(); // return string "default"
 Demo *tmp = sm["demo3"];
@@ -50,7 +50,7 @@ tmp->set("new demo name");
 tmp->get(); `or` sm["demo3"]->get(); // return "new demo name"
 ```
 you can also access items like an array,(Array starts with 0)
-```
+```cpp
 for(int i=0; i<sm.count(); i++) {
   sm[i]->call_method();
 }
@@ -67,7 +67,7 @@ void foo(Demo *td) {
 sm.for_each(foo);// passing a function as argument make sure that function must accept an argument of type `itemType *`
 ```
 # All available methods
-```
+```cpp
 append(string key, itemType *obj);//this method used for adding new items in the list
 at_beginning(string key, itemType *obj);//adds an item at the beginning of the list
 
@@ -108,7 +108,7 @@ you can also register a function for error handling. function will be called whe
 
 function must accepts 2 arguments one is `ErrorType` and second is (optional default is `true`) a bool indicating that after calling the function exception will be thrown or not.
 
-```
+```cpp
 sm.register_error_handler(
   [](ErrorType ert, std::string msg) {
     if(ert == ErrorType::KEY_ERROR)
